@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: testavimas.nd_3.ShopTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 29.21 s -- in testavimas.nd_3.ShopTest
