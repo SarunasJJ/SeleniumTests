@@ -14,7 +14,7 @@ import java.time.Duration;
 
 public class ShopTest{
 
-    private WebDriver driver;
+    private static WebDriver driver;
     private static WebDriverWait wait;
     private static String email;
     private static String password;
@@ -35,9 +35,13 @@ public class ShopTest{
         }
     }
 
-    @Test
-    @Order(1)
-    public void registerUser() {
+    @BeforeAll
+    public static void registerUser() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         driver.get("https://demowebshop.tricentis.com/");
         wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Log in"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[value='Register']"))).click();
@@ -63,13 +67,13 @@ public class ShopTest{
 
     
     @Test
-    @Order(2)
+    @Order(1)
     public void test1() throws IOException {
         runTest("data1.txt");
     }
 
     @Test
-    @Order(3)
+    @Order(2)
     public void test2() throws IOException {
         runTest("data2.txt");
     }
