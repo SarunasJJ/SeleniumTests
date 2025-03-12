@@ -8,9 +8,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
 import java.time.Duration;
 
 public class ShopTest{
@@ -89,7 +88,8 @@ public class ShopTest{
         wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Digital downloads"))).click();
         
         //Add products
-        try (BufferedReader br = new BufferedReader(new FileReader("C:\\PS\\testai\\nd-3\\src\\test\\java\\testavimas\\nd_3\\" + dataFile))) {
+
+        try (BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource(dataFile).getFile()))) {
             String productName;
             while ((productName = br.readLine()) != null) {
                 System.out.println("Adding product to cart: " + productName);
