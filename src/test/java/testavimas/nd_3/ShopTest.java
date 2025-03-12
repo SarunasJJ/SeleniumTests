@@ -63,6 +63,8 @@ public class ShopTest{
         
         System.out.println(email);
         System.out.println(password);
+
+        driver.quit();
     }
 
     
